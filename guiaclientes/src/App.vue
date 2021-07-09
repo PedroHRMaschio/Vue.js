@@ -7,14 +7,14 @@
     <input type="number" placeholder="idade" v-model="idadeField"><br>
     <input type="number" placeholder="numero" v-model="numeroField"><br>
     <button @click="cadastrarUsuario" id="cadastro">Cadastrar</button>
-    <div v-for="cliente in clients" :key="cliente.id">
+    <div v-for="cliente in orderClientes" :key="cliente.id">
       <Cliente :cliente="cliente" @meDelete="deletarUser($event)"/>
     </div>
   </div>
 </template>
 
 <script>
-
+import _ from "lodash";
 import Cliente from "./components/Cliente.vue";
 
 export default {
@@ -78,6 +78,11 @@ export default {
       var id = $event.idDoCliente;
       var novoArray = this.clients.filter(cliente => cliente.id != id);
       this.clients = novoArray;
+    }
+  },
+  computed: {
+    orderClientes: function(){
+      return _.orderBy(this.clients,["nome"],["asc"]);
     }
   }
 }

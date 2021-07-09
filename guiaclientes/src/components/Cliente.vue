@@ -5,11 +5,12 @@
         <p>{{descricao}}</p>
         <hr>
         <p>Número: {{cliente.numero}}</p>
-        <p>e-mail: {{cliente.email}}</p>
+        <p>e-mail: {{cliente.email | processarEmail}}</p>
         <p v-if="showIdade">Idade: {{cliente.idade}}</p>
         <p v-else>O usuário preferiu esconder a idade</p><!-- existe tbm a tag v-else-if, aonde eu posso colocar quantas consições eu quiser -->
         <button id="premium" @click="mudarCor">Mudar cor</button><br>
         <button id="deletar" @click="eventoDelet">Deletar</button>
+        <h4>Id especial: {{idEspecial}}</h4>
     </div>
 </template>
 
@@ -31,6 +32,16 @@ export default {
         },
         eventoDelet: function(){
             this.$emit("meDelete",{idDoCliente:this.cliente.id})
+        }
+    },
+    filters: {
+        processarEmail: function(value){
+            return value.toUpperCase();
+        }
+    },
+    computed: {
+        idEspecial: function(){
+            return (this.cliente.email + this.cliente.nome + this.cliente.id).toUpperCase();
         }
     }
 }
