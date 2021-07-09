@@ -8,7 +8,8 @@
         <p>e-mail: {{cliente.email}}</p>
         <p v-if="showIdade">Idade: {{cliente.idade}}</p>
         <p v-else>O usuário preferiu esconder a idade</p><!-- existe tbm a tag v-else-if, aonde eu posso colocar quantas consições eu quiser -->
-        <button @click="mudarCor">Mudar cor</button>
+        <button id="premium" @click="mudarCor">Mudar cor</button><br>
+        <button id="deletar" @click="eventoDelet">Deletar</button>
     </div>
 </template>
 
@@ -26,8 +27,10 @@ export default {
     },
     methods: {
         mudarCor: function(){
-            console.log()
             this.isPremium = !this.isPremium;
+        },
+        eventoDelet: function(){
+            this.$emit("meDelete",{idDoCliente:this.cliente.id})
         }
     }
 }
@@ -35,6 +38,17 @@ export default {
 <!-- aqui em style, caso uma propriedade comece com #, ele referencia um id de uma aplicação,
 caso comece com ., ele referencia uma classe da aplicação -->
 <style scoped>
+
+    #premium{
+        background-color: rgb(91, 27, 150);
+        color: rgb(224, 221, 221);
+    }
+
+    #deletar{
+        background-color: red;
+        color: rgb(224, 221, 221);
+        margin-top: 0.5%;
+    }
 
     .cliente{
         background-color: #F0F0F0;
