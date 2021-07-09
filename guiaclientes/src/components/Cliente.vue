@@ -1,5 +1,5 @@
 <template>
-    <div id="cliente">
+    <div :class="{'cliente': !isPremium,'cliente-premium': isPremium}">
         <h4>Nome: {{cliente.nome}}</h4>
         <hr>
         <p>{{descricao}}</p>
@@ -15,7 +15,8 @@
 export default {
     data(){
         return {
-            descricao: "Testador de software junior na Compasso UOL, futuro programador"
+            descricao: "Testador de software junior na Compasso UOL, futuro programador",
+            isPremium: false
         }
     },
     props: {
@@ -24,10 +25,20 @@ export default {
     }
 }
 </script>
-
+<!-- aqui em style, caso uma propriedade comece com #, ele referencia um id de uma aplicação,
+caso comece com ., ele referencia uma classe da aplicação -->
 <style scoped>
-    #cliente{
+
+    .cliente{
         background-color: #F0F0F0;
+        max-width: 600px;
+        max-height: 500px;
+        padding: 2%;
+        margin-top: 1%;
+    }
+
+    .cliente-premium{
+        background-color: gold;
         max-width: 600px;
         max-height: 500px;
         padding: 2%;
