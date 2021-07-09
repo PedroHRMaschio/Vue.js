@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <Cliente :cliente="clientePedro"/>
-    <Cliente :cliente="clienteLarissa"/>
-    <Cliente :cliente="clienteTobias"/>
-    <Cliente :cliente="clienteChico"/>
+    <Cliente :cliente="clientePedro" :showIdade="true"/>
+    <Cliente :cliente="clienteLarissa" :showIdade="true"/>
+    <Cliente :cliente="clienteTobias" :showIdade="false"/>
+    <Cliente :cliente="clienteChico" :showIdade="false"/>
   </div>
 </template>
 

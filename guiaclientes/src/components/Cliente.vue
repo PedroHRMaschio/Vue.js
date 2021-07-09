@@ -6,7 +6,8 @@
         <hr>
         <p>Número: {{cliente.numero}}</p>
         <p>e-mail: {{cliente.email}}</p>
-        <p>Idade: {{cliente.idade}}</p>
+        <p v-if="showIdade">Idade: {{cliente.idade}}</p>
+        <p v-else>O usuário preferiu esconder a idade</p><!-- existe tbm a tag v-else-if, aonde eu posso colocar quantas consições eu quiser -->
     </div>
 </template>
 
@@ -18,7 +19,8 @@ export default {
         }
     },
     props: {
-        cliente: Object
+        cliente: Object,
+        showIdade: Boolean
     }
 }
 </script>
