@@ -8,6 +8,7 @@
         <p>e-mail: {{cliente.email}}</p>
         <p v-if="showIdade">Idade: {{cliente.idade}}</p>
         <p v-else>O usuário preferiu esconder a idade</p><!-- existe tbm a tag v-else-if, aonde eu posso colocar quantas consições eu quiser -->
+        <button @click="mudarCor">Mudar cor</button>
     </div>
 </template>
 
@@ -22,6 +23,12 @@ export default {
     props: {
         cliente: Object,
         showIdade: Boolean
+    },
+    methods: {
+        mudarCor: function(){
+            console.log()
+            this.isPremium = !this.isPremium;
+        }
     }
 }
 </script>
